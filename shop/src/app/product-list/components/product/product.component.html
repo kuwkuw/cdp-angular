@@ -1,0 +1,17 @@
+<p>product works!</p>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <ul>
+                    <li>name: {{product.name}}</li>
+                    <li>description: {{product.description}}</li>
+                    <li>priccategory: {{product.price}}</li>
+                    <li>category: {{getCategory(product.category)}}</li>
+                    <li>isAvailable: {{product.isAvailable}}</li>
+                </ul>
+                <button *ngIf="!isPurchased" (click)="onBuy()" type="button" class="btn btn-primary">Buy</button>
+            </div>
+        </div>
+    </div>
+</div>
