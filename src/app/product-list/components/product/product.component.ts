@@ -12,9 +12,9 @@ import { CartService } from '../../../cart/services/cart.service';
 export class ProductComponent implements OnInit {
 
   @Input() product: Product;
-  @Input() isPurchased:boolean = false;
+  @Input() isPurchased = false;
 
-  constructor(private cartService: CartService ) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
   }

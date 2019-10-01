@@ -9,7 +9,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { CartComponent } from './cart/cart.component';
 
 import { ProductService } from './product-list/services/product.service';
-import { CartService } from './cart/services/cart.service'
+import { CartService } from './cart/services/cart.service';
 
 @NgModule({
   declarations: [
