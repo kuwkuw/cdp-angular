@@ -19,14 +19,11 @@ import { CartService } from './cart/services/cart.service';
     ProductListComponent,
     CartComponent
   ],
-  imports: [
-    BrowserModule,
-    NgbModule
-  ],
+  imports: [BrowserModule, NgbModule],
   providers: [
-    ProductService,
-    CartService
+    // ProductService, // этот сервис уже зарегистрирован через @Injectable
+    // CartService // аналогично и этот сервис
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
