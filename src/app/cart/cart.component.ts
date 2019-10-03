@@ -11,7 +11,7 @@ import { CartService } from './services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  products: Product[];
+  products: Product[]; // пока ок, но обычно в корзине можно увелиить количество товара
 
   constructor(private cartService: CartService) { }
 

@@ -12,7 +12,7 @@ import { CartService } from '../../../cart/services/cart.service';
 export class ProductComponent implements OnInit {
 
   @Input() product: Product;
-  @Input() isPurchased = false;
+  @Input() isPurchased = false; // может можно задействовать product.available?
 
   constructor(private cartService: CartService) { }
 
