@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CartModule } from './cart/cart.module';
-import { ProductsModule } from './products/products.module';
+import { ProductsModule } from './products';
+import { SharedModule } from './shared';
 
 import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -14,8 +16,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     NgbModule,
+    SharedModule,
     ProductsModule,
-    CartModule
+    CartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

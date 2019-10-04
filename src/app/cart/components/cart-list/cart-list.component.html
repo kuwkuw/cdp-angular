@@ -1,0 +1,13 @@
+<p>cart works!</p>
+
+<div *ngIf="cartList.length; else elseBlock">
+    <p>
+        Purchased products count: {{cartList.length}} sum: {{getSum()}}
+    </p>
+    <app-cart-item *ngFor="let product of cartList; index as i" (removeItem)="removeItem(i)" [item]="product"></app-cart-item>
+</div>
+<ng-template #elseBlock>
+    <div>
+        No purchased products
+    </div>
+</ng-template>
