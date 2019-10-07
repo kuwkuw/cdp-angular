@@ -8,10 +8,10 @@ import { CartItem } from '../models/cart-item.model';
   providedIn: 'root'
 })
 export class CartService {
-  private onAddToCard = new Subject<CartItem>();
+  private onCardUpdated = new Subject<CartItem>();
   private itemList: CartItem[] = [];
 
-  onAddToCard$ = this.onAddToCard.asObservable();
+  onCardUpdated$ = this.onCardUpdated.asObservable();
 
   get cartItemList() {
     return this.itemList;
@@ -29,7 +29,7 @@ export class CartService {
 
   addItemToCart(newItem: CartItem): void {
     this.itemList.push(newItem);
-    this.onAddToCard.next();
+    this.onCardUpdated.next();
   }
 
   removeItem(itemIndex: number): void {
@@ -38,6 +38,6 @@ export class CartService {
 
   updateItemCount(index, newCount) {
     this.itemList[index].count = newCount;
-    this.onAddToCard.next();
+    this.onCardUpdated.next();
   }
 }
