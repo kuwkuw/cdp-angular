@@ -1,7 +1,18 @@
 # Change Log
 
-## Home task 2
+## Home task 3
+### Added
+- CartItemModel povides product info and product count added intocart 
+    <br>``{ product: Product, count: number}``    
+### Update
+- CartService:
+    - ```cartItemList``` geter property returns infor about added products into cart.
+    - ```count``` geter property returns cout of products in cart.
+    - ```sum``` geter property returns sum prices of products in the cart.
+    - ```addItemToCart``` add new cartItem into cartItemList
 
+
+## Home task 2
 ### Added
 - Have splitted app on modules:
     - AppModule, 
