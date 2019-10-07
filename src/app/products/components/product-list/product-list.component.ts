@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
   }
 
   addProductToCart(product: Product) {
-    this.cartService.addToCart(product);
+    this.cartService.addItemToCart({ product, count: 1 });
   }
 
 }

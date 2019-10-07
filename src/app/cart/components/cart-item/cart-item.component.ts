@@ -12,6 +12,7 @@ export class CartItemComponent implements OnInit {
   @Input() item: Product;
 
   @Output() removeItem = new EventEmitter<Product>();
+  @Output() countChange = new EventEmitter<number>();
 
   constructor() { }
 
@@ -20,6 +21,23 @@ export class CartItemComponent implements OnInit {
 
   onRemoveItem() {
     this.removeItem.emit();
+  }
+
+  changeCount(newCount: number): void {
+    this.item.count = newCount;
+    this.countChange.emit(newCount);
+  }
+
+  increment(): void {
+    this.changeCount(this.item.count + 1);
+  }
+
+  decrement(): void {
+    if (this.item.count > 1) {
+      this.changeCount(this.item.count - 1);
+    } else {
+      this.removeItem.emit();
+    }
   }
 
 }

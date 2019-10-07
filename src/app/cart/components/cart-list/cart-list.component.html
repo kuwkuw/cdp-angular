@@ -2,9 +2,10 @@
 
 <div *ngIf="cartList.length; else elseBlock">
     <p>
-        Purchased products count: {{cartList.length}} sum: {{getSum()}}
+        Purchased products count: {{getCount()}} sum: {{getSum()}}
     </p>
-    <app-cart-item *ngFor="let product of cartList; index as i" (removeItem)="removeItem(i)" [item]="product"></app-cart-item>
+    <app-cart-item *ngFor="let cartItem of cartList; index as i" (removeItem)="onRemoveItem(i)" (countChange)="onCountChange(i, $event)" [item]="cartItem">
+    </app-cart-item>
 </div>
 <ng-template #elseBlock>
     <div>

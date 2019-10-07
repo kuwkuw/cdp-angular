@@ -1,37 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, from } from 'rxjs';
 
 import { Product } from '../../products/models/product.model';
+import { CartItem } from '../models/cart-item.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private onAddToCard = new Subject<Product>();
-  private productsInCart: Product[] = [];
+  private onAddToCard = new Subject<CartItem>();
+  private itemList: CartItem[] = [];
 
   onAddToCard$ = this.onAddToCard.asObservable();
 
-  get cartList() {
-    return this.productsInCart;
+  get cartItemList() {
+    return this.itemList;
   }
 
   get count() {
-    return this.productsInCart.length;
+    return this.itemList.reduce((count, item) => (count += item.count), 0);
   }
 
   get sum() {
-    return this.productsInCart.reduce((sun: number, curItem: Product) => sun += curItem.price, 0);
+    return this.itemList.reduce((sun: number, curItem) => sun += curItem.product.price * curItem.count, 0);
   }
 
   constructor() { }
 
-  addToCart(product: Product): void {
-    this.productsInCart.push(product);
-    this.onAddToCard.next(product);
+  addItemToCart(newItem: CartItem): void {
+    this.itemList.push(newItem);
+    this.onAddToCard.next();
   }
 
   removeItem(itemIndex: number): void {
-    this.productsInCart.splice(itemIndex, 1);
+    this.itemList.splice(itemIndex, 1);
+  }
+
+  updateItemCount(index, newCount) {
+    this.itemList[index].count = newCount;
+    this.onAddToCard.next();
   }
 }
