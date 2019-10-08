@@ -8,6 +8,8 @@ import { SharedModule } from './shared';
 
 import { AppComponent } from './app.component';
 
+import { LocalStorageService } from './core';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { AppComponent } from './app.component';
     ProductsModule,
     CartModule,
   ],
-  providers: [],
+  providers: [LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

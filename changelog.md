@@ -2,8 +2,12 @@
 
 ## Home task 3
 ### Added
-- CartItemModel povides product info and product count added intocart 
-    <br>``{ product: Product, count: number}``    
+- CartItemModel provides product info and product count added into cart 
+    <br>``{ product: Product, count: number}``
+- LocalStorageService provides access to window.localStorage
+    - ```setItem``` set item into storage by key.
+    - ```getItem``` return item from storage by key.
+    - ```removeItem``` remove item from storage by key.
 ### Update
 - CartService:
     - ```cartItemList``` geter property returns infor about added products into cart.
