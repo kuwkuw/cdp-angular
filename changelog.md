@@ -8,11 +8,15 @@
     - ```setItem``` set item into storage by key.
     - ```getItem``` return item from storage by key.
     - ```removeItem``` remove item from storage by key.
+- LocalStorageService:
+    - ```setConfig``` set configuration object.
+    - ```addConfig``` set configuration option or bench of options.
+    - ```getConfig``` return configuration options.
 ### Update
 - CartService:
-    - ```cartItemList``` geter property returns infor about added products into cart.
-    - ```count``` geter property returns cout of products in cart.
-    - ```sum``` geter property returns sum prices of products in the cart.
+    - ```cartItemList``` getter property returns info about added products into cart.
+    - ```count``` getter property returns count of products in cart.
+    - ```sum``` getter property returns sum prices of products in the cart.
     - ```addItemToCart``` add new cartItem into cartItemList
 
 

@@ -8,7 +8,7 @@ import { SharedModule } from './shared';
 
 import { AppComponent } from './app.component';
 
-import { LocalStorageService } from './core';
+import { LocalStorageService, ConfigOptionsService } from './core';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { LocalStorageService } from './core';
     ProductsModule,
     CartModule,
   ],
-  providers: [LocalStorageService],
+  providers: [LocalStorageService, ConfigOptionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
