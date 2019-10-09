@@ -4,14 +4,18 @@
 ### Added
 - CartItemModel provides product info and product count added into cart 
     <br>``{ product: Product, count: number}``
-- LocalStorageService provides access to window.localStorage
+- LocalStorageService provides access to window.localStorage. added provider using 'useClass'
     - ```setItem``` set item into storage by key.
     - ```getItem``` return item from storage by key.
     - ```removeItem``` remove item from storage by key.
-- LocalStorageService:
+- ConfigOptionsService: 
     - ```setConfig``` set configuration object.
     - ```addConfig``` set configuration option or bench of options.
     - ```getConfig``` return configuration options.
+- ConstantsService: added provider using 'useValue'
+- GeneratorService: added provider using 'useFactory'
+- AboutComponent: added component and injector services [LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService] using directive @Optional()
+
 ### Update
 - CartService:
     - ```cartItemList``` getter property returns info about added products into cart.

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject, from } from 'rxjs';
 
-import { Product } from '../../products/models/product.model';
 import { CartItem } from '../models/cart-item.model';
+
+import { LocalStorageService, ConfigOptionsService } from '../../core';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class CartService {
     return this.itemList.reduce((sun: number, curItem) => sun += curItem.product.price * curItem.count, 0);
   }
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   addItemToCart(newItem: CartItem): void {
     this.itemList.push(newItem);
@@ -39,5 +40,9 @@ export class CartService {
   updateItemCount(index, newCount) {
     this.itemList[index].count = newCount;
     this.onCardUpdated.next();
+  }
+
+  saveCart(): void {
+    this.localStorageService.setItem('cart-list', this.cartItemList);
   }
 }

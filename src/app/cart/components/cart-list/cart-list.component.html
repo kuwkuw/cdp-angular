@@ -6,6 +6,9 @@
     </p>
     <app-cart-item *ngFor="let cartItem of cartList; index as i" (removeItem)="onRemoveItem(i)" (countChange)="onCountChange(i, $event)" [item]="cartItem">
     </app-cart-item>
+    <div>
+        <button (click)="onSaveCartItems()" type="button" class="btn btn-primary">Save cart items</button>
+    </div>
 </div>
 <ng-template #elseBlock>
     <div>

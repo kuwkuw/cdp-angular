@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GeneratorServiceService } from './generator-service.service';
+import {  GeneratorService } from './generator.service';
 
 describe('GeneratorServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: GeneratorServiceService = TestBed.get(GeneratorServiceService);
+    const service: GeneratorService = TestBed.get(GeneratorService);
     expect(service).toBeTruthy();
   });
 });
