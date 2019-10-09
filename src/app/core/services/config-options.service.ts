@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Config } from '../models/config.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ConfigOptionsService {
 
   private config: Config;

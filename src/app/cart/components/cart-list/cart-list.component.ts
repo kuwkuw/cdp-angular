@@ -37,6 +37,10 @@ export class CartListComponent implements OnInit, OnDestroy {
     this.cartService.updateItemCount(itemIndex, parseInt(newCount, 10));
   }
 
+  onSaveCartItems(): void {
+    this.cartService.saveCart();
+  }
+
   getSum(): number {
     return this.cartService.sum;
   }

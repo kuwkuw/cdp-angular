@@ -7,13 +7,22 @@ import { ProductsModule } from './products';
 import { SharedModule } from './shared';
 
 import { AppComponent } from './app.component';
+import { AboutComponent } from './layout/components/about/about.component';
 
-import { LocalStorageService, ConfigOptionsService } from './core';
+import {
+  LocalStorageService,
+  ConfigOptionsService,
+  ConstantsServiceService,
+  ConstantsServiceServiceValue,
+  GeneratorService, generatorServiceFactory
+} from './core';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +31,12 @@ import { LocalStorageService, ConfigOptionsService } from './core';
     ProductsModule,
     CartModule,
   ],
-  providers: [LocalStorageService, ConfigOptionsService],
+  providers: [
+    { provide: LocalStorageService, useClass: LocalStorageService },
+    { provide: ConstantsServiceService, useValue: ConstantsServiceServiceValue },
+    { provide: GeneratorService, useFactory: generatorServiceFactory(10)},
+    ConfigOptionsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
