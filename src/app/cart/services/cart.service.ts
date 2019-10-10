@@ -9,6 +9,7 @@ import { LocalStorageService, ConfigOptionsService } from '../../core';
   providedIn: 'root'
 })
 export class CartService {
+  // что такое Card? может Cart?
   private onCardUpdated = new Subject<CartItem>();
   private itemList: CartItem[] = [];
 

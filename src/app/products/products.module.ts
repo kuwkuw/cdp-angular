@@ -15,11 +15,11 @@ import { ProductService } from './services/product.service';
     CommonModule
   ],
   exports: [
-    ProductComponent,
+    ProductComponent, // <-- это должен быть приватный компонент
     ProductListComponent
   ],
   providers: [
-    ProductService
+    // ProductService // этот сервис уже зарегистрирован через собственный декоратор
   ]
 })
 export class ProductsModule { }
