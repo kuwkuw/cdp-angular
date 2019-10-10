@@ -34,7 +34,7 @@ import {
   providers: [
     { provide: LocalStorageService, useClass: LocalStorageService },
     { provide: ConstantsServiceService, useValue: ConstantsServiceServiceValue },
-    { provide: GeneratorService, useFactory: generatorServiceFactory.bind(10)},
+    { provide: GeneratorService, useFactory: generatorServiceFactory(10)},
     ConfigOptionsService
   ],
   bootstrap: [AppComponent]

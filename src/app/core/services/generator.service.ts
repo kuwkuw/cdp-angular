@@ -11,6 +11,8 @@ export class GeneratorService {
 }
 
 export function generatorServiceFactory(n: number) {
-  return new GeneratorService(n);
+  return () => {
+    return new GeneratorService(n);
+  };
 }
 

@@ -21,6 +21,7 @@ export class AboutComponent implements OnInit {
     @Optional() private generator: GeneratorService) { }
 
   ngOnInit() {
+    console.log(this.generator.generate());
   }
 
 }
