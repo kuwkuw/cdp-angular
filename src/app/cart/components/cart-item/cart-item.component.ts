@@ -24,6 +24,7 @@ export class CartItemComponent implements OnInit {
   }
 
   changeCount(newCount: number): void {
+    // Так не нужно делать, этот компонент не должен менять данные
     this.item.count = newCount;
     this.countChange.emit(newCount);
   }

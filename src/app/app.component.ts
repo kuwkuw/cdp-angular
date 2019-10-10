@@ -13,6 +13,7 @@ export class AppComponent implements AfterViewInit {
   constructor(private constantsServiceService: ConstantsServiceService) {}
 
   ngAfterViewInit() {
+    // Можно тут применить Renderer2
     (this.titleRef.nativeElement as HTMLElement).innerText = this.constantsServiceService.title;
   }
 }

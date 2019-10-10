@@ -14,21 +14,23 @@ import { CartService } from '../../services/cart.service';
 export class CartListComponent implements OnInit, OnDestroy {
 
   cartAddSub: Subscription;
-  cartList: CartItem[];
+  cartList: CartItem[] = [];
 
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    this.cartList = [];
+    // this.cartList = [];
     this.cartService.onCardUpdated$.subscribe(() => {
       this.cartList = this.cartService.cartItemList;
     });
   }
 
   ngOnDestroy(): void {
+    // А где эта подписка создается?
     this.cartAddSub.unsubscribe();
   }
 
+  // тип параметра?
   onRemoveItem(cartItemIndex): void {
     this.cartService.removeItem(cartItemIndex);
   }

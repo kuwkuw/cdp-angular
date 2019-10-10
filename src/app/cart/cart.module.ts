@@ -24,7 +24,7 @@ import { CartService } from './services/cart.service';
     CartListComponent
   ],
   providers: [
-    CartService
+    // CartService // сервис уже зарегистрирован с помощью своего декоратора
   ]
 })
 export class CartModule { }
