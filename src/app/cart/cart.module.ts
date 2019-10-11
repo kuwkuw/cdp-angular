@@ -1,6 +1,6 @@
 import { NgModule, } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
@@ -24,7 +24,8 @@ import { CartService } from './services/cart.service';
     CartListComponent
   ],
   providers: [
-    CartService
+    CartService,
+    CurrencyPipe
   ]
 })
 export class CartModule { }

@@ -14,7 +14,7 @@ import {
   ConfigOptionsService,
   ConstantsServiceService,
   ConstantsServiceServiceValue,
-  GeneratorService, generatorServiceFactory
+  RandomString, generatorServiceFactory
 } from './core';
 
 
@@ -34,7 +34,7 @@ import {
   providers: [
     { provide: LocalStorageService, useClass: LocalStorageService },
     { provide: ConstantsServiceService, useValue: ConstantsServiceServiceValue },
-    { provide: GeneratorService, useFactory: generatorServiceFactory(10)},
+    { provide: RandomString, useFactory: generatorServiceFactory(10)},
     ConfigOptionsService
   ],
   bootstrap: [AppComponent]

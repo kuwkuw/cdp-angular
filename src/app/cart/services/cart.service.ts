@@ -9,10 +9,10 @@ import { LocalStorageService, ConfigOptionsService } from '../../core';
   providedIn: 'root'
 })
 export class CartService {
-  private onCardUpdated = new Subject<CartItem>();
+  private onCartUpdated = new Subject<CartItem>();
   private itemList: CartItem[] = [];
 
-  onCardUpdated$ = this.onCardUpdated.asObservable();
+  onCartUpdated$ = this.onCartUpdated.asObservable();
 
   get cartItemList() {
     return this.itemList;
@@ -30,7 +30,7 @@ export class CartService {
 
   addItemToCart(newItem: CartItem): void {
     this.itemList.push(newItem);
-    this.onCardUpdated.next();
+    this.onCartUpdated.next();
   }
 
   removeItem(itemIndex: number): void {
@@ -39,7 +39,7 @@ export class CartService {
 
   updateItemCount(index, newCount) {
     this.itemList[index].count = newCount;
-    this.onCardUpdated.next();
+    this.onCartUpdated.next();
   }
 
   saveCart(): void {

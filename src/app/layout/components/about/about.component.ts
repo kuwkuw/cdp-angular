@@ -1,10 +1,10 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, OnInit, Optional, Inject } from '@angular/core';
 
 import {
   LocalStorageService,
   ConfigOptionsService,
   ConstantsServiceService,
-  GeneratorService,
+  RandomString,
 } from '../../../core';
 
 @Component({
@@ -18,10 +18,10 @@ export class AboutComponent implements OnInit {
     @Optional() private localStorage: LocalStorageService,
     @Optional() private configOptions: ConfigOptionsService,
     @Optional() private constantsService: ConstantsServiceService,
-    @Optional() private generator: GeneratorService) { }
+    @Inject(RandomString) private randomString: string) { }
 
   ngOnInit() {
-    console.log(this.generator.generate());
+    console.log(this.randomString);
   }
 
 }

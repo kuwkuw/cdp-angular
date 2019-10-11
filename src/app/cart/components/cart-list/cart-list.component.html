@@ -2,9 +2,9 @@
 
 <div *ngIf="cartList.length; else elseBlock">
     <p>
-        Purchased products count: {{getCount()}} sum: {{getSum()}}
+        Purchased products count: {{getCount()}} sum: {{getSum() | currency: 'EUR'}}
     </p>
-    <app-cart-item *ngFor="let cartItem of cartList; index as i" (removeItem)="onRemoveItem(i)" (countChange)="onCountChange(i, $event)" [item]="cartItem">
+    <app-cart-item *ngFor="let cartItem of cartList | orderBy : 'product' : 'price'; index as i" (removeItem)="onRemoveItem(i)" (countChange)="onCountChange(i, $event)" [item]="cartItem">
     </app-cart-item>
     <div>
         <button (click)="onSaveCartItems()" type="button" class="btn btn-primary">Save cart items</button>

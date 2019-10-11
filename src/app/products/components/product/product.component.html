@@ -5,8 +5,8 @@
                 <ul>
                     <li>name: {{product.name}}</li>
                     <li>description: {{product.description}}</li>
-                    <li>price: {{product.price}}</li>
-                    <li>category: {{getCategory(product.category)}}</li>
+                    <li>price: {{product.price | currency: 'EUR'}}</li>
+                    <li>category: {{getCategory(product.category) | uppercase}}</li>
                     <li>isAvailable: {{product.isAvailable}}</li>
                 </ul>
                 <button [disabled]="!product.isAvailable" (click)="onAddToCart()" type="button" class="btn btn-primary">Add to cart</button>

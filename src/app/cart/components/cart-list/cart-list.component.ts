@@ -14,13 +14,12 @@ import { CartService } from '../../services/cart.service';
 export class CartListComponent implements OnInit, OnDestroy {
 
   cartAddSub: Subscription;
-  cartList: CartItem[];
+  cartList: CartItem[] = [];
 
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    this.cartList = [];
-    this.cartService.onCardUpdated$.subscribe(() => {
+    this.cartAddSub = this.cartService.onCartUpdated$.subscribe(() => {
       this.cartList = this.cartService.cartItemList;
     });
   }
@@ -29,7 +28,7 @@ export class CartListComponent implements OnInit, OnDestroy {
     this.cartAddSub.unsubscribe();
   }
 
-  onRemoveItem(cartItemIndex): void {
+  onRemoveItem(cartItemIndex: number): void {
     this.cartService.removeItem(cartItemIndex);
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Product } from '../../models/product.model';
 
@@ -11,7 +12,7 @@ import { CartService } from '../../../cart/services/cart.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products: Product[];
+  products: Observable<Product[]>;
 
   constructor(private productService: ProductService, private cartService: CartService) { }
 

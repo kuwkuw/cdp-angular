@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe, UpperCasePipe, AsyncPipe } from '@angular/common';
 
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -15,10 +15,12 @@ import { ProductService } from './services/product.service';
     CommonModule
   ],
   exports: [
-    ProductComponent,
     ProductListComponent
   ],
   providers: [
+    CurrencyPipe,
+    UpperCasePipe,
+    AsyncPipe,
     ProductService
   ]
 })

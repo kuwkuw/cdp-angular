@@ -6,13 +6,20 @@ export class LocalStorageService {
 
   constructor() { }
 
-  setItem(key: string, value: object | string): void {
-    const stringifiedValue = typeof value === 'object' ? JSON.stringify(value) : value;
-    this.storage.setItem(key, stringifiedValue);
+  setItem(key: string, value: object): void {
+    try {
+      return this.storage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      console.error('Saving to localStorage failed', e);
+    }
   }
 
-  getItem(key: string): string {
-    return this.getItem(key);
+  getItem(key: string): any {
+    try {
+      return JSON.parse(this.getItem(key));
+    } catch (e) {
+      console.error('Load to localStorage failed', e);
+    }
   }
 
   removeItem(key: string): void {

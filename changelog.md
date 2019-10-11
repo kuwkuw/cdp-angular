@@ -1,5 +1,14 @@
 # Change Log
 
+## Home task 4
+### Added
+- Used builded in pips
+    - CurrencyPipe
+    - UpperCasePipe
+    - AsyncPipe
+### Update
+-  ProductService updated ```getProducts()``` now returns ```Observable<Product[]>```
+
 ## Home task 3
 ### Added
 - CartItemModel provides product info and product count added into cart 
@@ -15,7 +24,6 @@
 - ConstantsService: added provider using 'useValue'
 - GeneratorService: added provider using 'useFactory'
 - AboutComponent: added component and injector services [LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService] using directive @Optional()
-
 ### Update
 - CartService:
     - ```cartItemList``` getter property returns info about added products into cart.
