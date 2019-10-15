@@ -1,12 +1,22 @@
 <p>cart works!</p>
 
 <div *ngIf="cartList.length; else elseBlock">
-    <p>
-        Purchased products count: {{getCount()}} sum: {{getSum() | currency: 'EUR'}}
-    </p>
-    <app-cart-item *ngFor="let cartItem of cartList | orderBy : 'product' : 'price'; index as i" (removeItem)="onRemoveItem(i)" (countChange)="onCountChange(i, $event)" [item]="cartItem">
-    </app-cart-item>
-    <div>
+    <div class="row">
+        <p>
+            Purchased products count: {{getCount()}} sum: {{getSum() | currency: 'EUR'}}
+        </p>
+    </div>
+    <div class="row">
+        <span>Set order: </span>
+        <button (click)="isAscendingOrder = !isAscendingOrder" type="button"
+            class="btn btn-primary">{{isAscendingOrder ? 'ascending':'descending'}}</button>
+    </div>
+    <div class="row">
+        <app-cart-item *ngFor="let cartItem of cartList | orderBy : 'product' : 'price': isAscendingOrder; index as i"
+            (removeItem)="onRemoveItem(i)" (countChange)="onCountChange(i, $event)" [item]="cartItem">
+        </app-cart-item>
+    </div>
+    <div class="row">
         <button (click)="onSaveCartItems()" type="button" class="btn btn-primary">Save cart items</button>
     </div>
 </div>

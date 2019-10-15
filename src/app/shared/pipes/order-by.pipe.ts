@@ -7,34 +7,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OrderByPipe implements PipeTransform {
 
   transform(value: any[], ...args: any[]): any {
-
-
-    // let prsedValue = value.map((valObj) => {
-    //   return args.reduce((val, prop) => {
-    //     let result;
-    //     if (typeof val === 'object') {
-    //       result = val[prop];
-    //     } else {
-    //       result = value;
-    //     }
-    //     return result;
-    //   }, valObj);
-    // });
-
-    // return prsedValue.sort((a, b) => a - b);
-
+    let ascending = true;
+    if (typeof args[args.length - 1] === 'boolean') {
+      ascending = args.pop();
+    }
     return value.sort((a, b) => {
-      // if (a.hasOwnProperty(propName) && b.hasOwnProperty(propName)) {
-      //   throw Error(`Object property "${propName}" not exists`);
-      // }
-      // if (propName.indexOf('.') !== -1) {
-      //   let [first] = propName;
-      //   let { f } = []
-      // }
       const aValue = parsObject(a, args);
       const bValue = parsObject(b, args);
       if (typeof aValue === 'number' && typeof bValue === 'number') {
-        return aValue - bValue;
+        return ascending ? aValue - bValue : bValue - aValue;
       }
     });
   }

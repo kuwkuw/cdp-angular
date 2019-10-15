@@ -13,6 +13,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartListComponent implements OnInit, OnDestroy {
 
+  isAscendingOrder = true;
   cartAddSub: Subscription;
   cartList: CartItem[] = [];
 

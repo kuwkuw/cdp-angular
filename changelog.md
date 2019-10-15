@@ -3,9 +3,10 @@
 ## Home task 4
 ### Added
 - Used builded in pips
-    - CurrencyPipe
-    - UpperCasePipe
-    - AsyncPipe
+    - CurrencyPipe used in ProductComponent
+    - UpperCasePipe used in ProductComponent
+    - AsyncPipe in ProductListComponent
+- Added custom pipe ```orderBy``` in CartListComponent
 ### Update
 -  ProductService updated ```getProducts()``` now returns ```Observable<Product[]>```
 
