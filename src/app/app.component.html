@@ -1,8 +1,24 @@
 <div class="content" role="main">
   <div class="container">
-      <h1 #appTitle></h1> 
-    <app-product-list></app-product-list>
-    <app-cart></app-cart>
-    <app-about></app-about>
+    <div>
+      <h1 #appTitle></h1>
+    </div>
+    <nav class="navbar navbar-default">
+      <div>
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active">
+            <a routerLink="/products">Products</a>
+          </li>
+          <li routerLinkActive="active">
+              <a href="#about" routerLink="/cart">Cart</a>
+            </li>
+          <li routerLinkActive="active">
+            <a href="#about" routerLink="/about">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <router-outlet>
+    </router-outlet>
   </div>
 </div>

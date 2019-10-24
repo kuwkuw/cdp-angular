@@ -2,27 +2,26 @@ import { NgModule, } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 
-import { CartListComponent } from './components/cart-list/cart-list.component';
-import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { CartRoutingModule } from './cart-routing.module';
 
 import { SharedModule } from '../shared';
 
 import { CartService } from './services/cart.service';
+import { CartComponent } from './cart.component';
 
 
 @NgModule({
   declarations: [
-    CartListComponent,
-    CartItemComponent,
+    CartComponent,
+    CartComponent.components
   ],
   imports: [
     CommonModule,
+    CartRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
-  exports: [
-    CartListComponent
-  ],
+  exports: [],
   providers: [
     CartService,
     CurrencyPipe

@@ -4,6 +4,8 @@ import { CommonModule, CurrencyPipe, UpperCasePipe, AsyncPipe } from '@angular/c
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 
+import { ProductsRoutingModule } from './products-routing.module';
+
 import { ProductService } from './services/product.service';
 
 @NgModule({
@@ -12,7 +14,8 @@ import { ProductService } from './services/product.service';
     ProductListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProductsRoutingModule
   ],
   exports: [
     ProductListComponent

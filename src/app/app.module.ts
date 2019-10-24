@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products';
 import { SharedModule } from './shared';
 
 import { AppComponent } from './app.component';
-import { AboutComponent } from './layout/components/about/about.component';
 
 import {
   LocalStorageService,
@@ -16,13 +17,11 @@ import {
   ConstantsServiceServiceValue,
   RandomString, generatorServiceFactory
 } from './core';
-
-
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AboutComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -30,11 +29,13 @@ import {
     SharedModule,
     ProductsModule,
     CartModule,
+    LayoutModule,
+    AppRoutingModule
   ],
   providers: [
     { provide: LocalStorageService, useClass: LocalStorageService },
     { provide: ConstantsServiceService, useValue: ConstantsServiceServiceValue },
-    { provide: RandomString, useFactory: generatorServiceFactory(10)},
+    { provide: RandomString, useFactory: generatorServiceFactory(10) },
     ConfigOptionsService
   ],
   bootstrap: [AppComponent]

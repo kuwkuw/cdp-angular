@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <div class="card" [ngClass]="{'available': product.isAvailable}">
+        <div class="card" *ngIf="product" [ngClass]="{'available': product.isAvailable}">
             <div class="card-body">
                 <ul>
                     <li>name: {{product.name}}</li>
@@ -9,7 +9,10 @@
                     <li>category: {{getCategory(product.category) | uppercase}}</li>
                     <li>isAvailable: {{product.isAvailable}}</li>
                 </ul>
-                <button [disabled]="!product.isAvailable" (click)="onAddToCart()" type="button" class="btn btn-primary">Add to cart</button>
+                <div *ngIf="!isDetailsMode"> 
+                    <button [disabled]="!product.isAvailable" (click)="onAddToCart()" type="button" class="btn btn-primary">Add to cart</button>
+                    <button (click)="onShowProductDetails()" type="button" class="btn btn-primary">Show Product Details</button>
+                </div>
             </div>
         </div>
     </div>
