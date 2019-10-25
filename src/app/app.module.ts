@@ -18,6 +18,7 @@ import {
   RandomString, generatorServiceFactory
 } from './core';
 import { LayoutModule } from './layout/layout.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LayoutModule } from './layout/layout.module';
     ProductsModule,
     CartModule,
     LayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [
     { provide: LocalStorageService, useClass: LocalStorageService },

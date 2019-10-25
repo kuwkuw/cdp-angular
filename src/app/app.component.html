@@ -1,24 +1,28 @@
 <div class="content" role="main">
-  <div class="container">
-    <div>
-      <h1 #appTitle></h1>
+  <div>
+    <h1 #appTitle></h1>
+  </div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <a routerLink="/products">Products</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#about" routerLink="/cart">Cart</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#about" routerLink="/about">About</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#about" routerLink="/admin">Admin panel</a>
+        </li>
+      </ul>
     </div>
-    <nav class="navbar navbar-default">
-      <div>
-        <ul class="nav navbar-nav">
-          <li routerLinkActive="active">
-            <a routerLink="/products">Products</a>
-          </li>
-          <li routerLinkActive="active">
-              <a href="#about" routerLink="/cart">Cart</a>
-            </li>
-          <li routerLinkActive="active">
-            <a href="#about" routerLink="/about">About</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <router-outlet>
-    </router-outlet>
+  </nav>
+  <div class="container">
+    <div class="col-md-10">
+      <router-outlet> </router-outlet>
+    </div>
   </div>
 </div>

@@ -1,19 +1,20 @@
-<div class="row">
-    <div class="col">
-        <div class="card" *ngIf="product" [ngClass]="{'available': product.isAvailable}">
-            <div class="card-body">
-                <ul>
-                    <li>name: {{product.name}}</li>
-                    <li>description: {{product.description}}</li>
-                    <li>price: {{product.price | currency: 'EUR'}}</li>
-                    <li>category: {{getCategory(product.category) | uppercase}}</li>
-                    <li>isAvailable: {{product.isAvailable}}</li>
-                </ul>
-                <div *ngIf="!isDetailsMode"> 
-                    <button [disabled]="!product.isAvailable" (click)="onAddToCart()" type="button" class="btn btn-primary">Add to cart</button>
-                    <button (click)="onShowProductDetails()" type="button" class="btn btn-primary">Show Product Details</button>
-                </div>
-            </div>
+<div class="panel panel-default" *ngIf="product">
+    <div class="panel-heading">Product</div>
+    <div class="panel-body" [ngClass]="{'available': product.isAvailable}">
+        <ul>
+            <li>name: {{product.name}}</li>
+            <li>description: {{product.description}}</li>
+            <li>price: {{product.price | currency: 'EUR'}}</li>
+            <li>category: {{getCategory(product.category) | uppercase}}</li>
+            <li>isAvailable: {{product.isAvailable}}</li>
+        </ul>
+        <div>
+            <button type="button" class="btn btn-primary btn-sm" [disabled]="!product.isAvailable"
+                (click)="onAddToCart()">Add to cart
+            </button>
+            <button type="button" class="btn btn-primary btn-sm"  *ngIf="!isDetailsMode" (click)="onShowProductDetails()">
+                Show Product Details
+            </button>
         </div>
     </div>
 </div>
