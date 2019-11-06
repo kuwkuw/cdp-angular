@@ -1,5 +1,18 @@
 # Change Log
 
+## Home task 6
+### Added
+- Mock server with json-server "db/db.json"
+- ProductsHttpClientService
+    - ```getProducts(): Observable<Product[]>``` returns list on products
+    - ```getProduct(productId: number):Observable<Product[]> ``` returns product by id
+    - ```createProduct(product: Product): Promise<Product>``` create new product
+    - ```updateProduct(product: Product): Promise<Product>``` update product
+    - ```deleteProduct(product: Product): Promise<Product>``` delete product
+- AutoUnsubscribe added unsubscribe decorator 
+- TimingInterceptor added timing interceptor for "/products" end point
+- AppSettings
+
 ## Home task 5
 ### Added
 -  Routs: 

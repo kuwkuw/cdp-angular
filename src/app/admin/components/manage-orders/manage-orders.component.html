@@ -1,5 +1,5 @@
 <div *ngFor="let order of orders">
-    <div *ngFor="let orderItem of order">
+    <div *ngFor="let orderItem of order.items">
         <div class="panel panel-default">
             <div class="panel-heading">Product</div>
             <div class="panel-body" [ngClass]="{'available': orderItem.product.isAvailable}">
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div>
-        <button type="button" class="btn btn-primary btn-sm" (click)="onDelete(order)">Delete
+        <button type="button" class="btn btn-primary btn-sm" (click)="onDeleteOrder(order)">Delete
         </button>
     </div>
 </div>

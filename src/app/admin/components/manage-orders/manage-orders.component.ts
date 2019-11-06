@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { OrderService } from '../../../core';
+import { OrderService, AutoUnsubscribe } from '../../../core';
+import { Order } from '../../../core/models/order.model';
 import { CartItem } from '../../../cart/models';
 
 @Component({
@@ -8,20 +10,23 @@ import { CartItem } from '../../../cart/models';
   templateUrl: './manage-orders.component.html',
   styleUrls: ['./manage-orders.component.css']
 })
+@AutoUnsubscribe()
 export class ManageOrdersComponent implements OnInit {
 
-  orders: CartItem[][];
+  sub: Subscription;
+  orders: Order[];
   constructor(
     private orderService: OrderService
   ) { }
 
   ngOnInit() {
-    this.orders = this.orderService.getOrderList();
+    this.sub = this.orderService.getOrderList().subscribe(orders => this.orders = orders);
   }
 
-  onDelete(deletingOrder: CartItem[]) {
-    this.orderService.removeOrder(deletingOrder);
-    this.orders = this.orderService.getOrderList();
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }

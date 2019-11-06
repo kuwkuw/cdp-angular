@@ -1,14 +1,18 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
+import { Subscription, from} from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
+import {AutoUnsubscribe} from '../../../core';
 import { Product, ProductService } from '../../../products';
 
 @Component({
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
+@AutoUnsubscribe()
 export class ProductFormComponent implements OnInit {
+  sub: Subscription;
   product: Product;
   originalProduct: Product;
 
@@ -19,7 +23,7 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.data.pipe(pluck('product')).subscribe((product: Product) => {
+    this.sub = this.route.data.pipe(pluck('product')).subscribe((product: Product) => {
       this.product = { ...product };
       this.originalProduct = { ...product };
     });
@@ -29,11 +33,9 @@ export class ProductFormComponent implements OnInit {
     const product = { ...this.product };
 
     if (product.id) {
-      this.productService.updateUser(product);
-      // optional parameter: http://localhost:4200/users;id=2
-      // this.router.navigate(['/users', { editedUserID: user.id }]);
+      this.productService.updateProduct(product);
     } else {
-      this.productService.createUser(product);
+      this.productService.createProduct(product);
       this.onGoBack();
     }
     this.originalProduct = { ...this.product };

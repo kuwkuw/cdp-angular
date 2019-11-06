@@ -26,6 +26,10 @@ export class ManageProductsComponent implements OnInit {
     this.router.navigate(['./edit', product.id], { relativeTo: this.route });
   }
 
+  onDelete(product: Product) {
+    this.productService.deleteProduct(product).then(_ => this.products = this.productService.getProducts());
+  }
+
   onAdd() {
     this.router.navigate(['./add'], { relativeTo: this.route });
   }

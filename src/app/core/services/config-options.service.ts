@@ -21,6 +21,6 @@ export class ConfigOptionsService {
   }
 
   getConfig(key: string): Config | string {
-    return key ? this.config[key] : this.config;
+    return key ? this.config[key] : Object.assign(this.config);
   }
 }

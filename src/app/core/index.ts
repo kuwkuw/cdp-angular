@@ -5,3 +5,5 @@ export * from './services/auth.service';
 export * from './services/generator.service';
 export * from './services/order.service';
 export * from './guards/auth.guard';
+export * from './decorators/auto-unsubscribe.decorator';
+export * from './services/app-settings.service';
