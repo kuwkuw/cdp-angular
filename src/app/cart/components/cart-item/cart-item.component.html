@@ -1,18 +1,16 @@
-<div class="row">
-    <div appBgHighlighter class="card">
-        <div class="card-body">
-            <ul>
-                <li>name: {{item.product.name}}</li>
-                <li>description: {{item.product.description}}</li>
-                <li>price: {{item.product.price}}</li>
-                <li>
-                    <span>count:</span>
-                    <button (click)="increment()" type="button" class="btn btn-primary">+</button>
-                    <input type="text" (change)="changeCount($event.target.value)" [value]=item.count>
-                    <button (click)="decrement()" type="button" class="btn btn-primary">-</button>
-                </li>
-            </ul>
-            <button (click)="onRemoveItem()" type="button" class="btn btn-primary">Remove from cart</button>
-        </div>
+<div appBgHighlighter class="card">
+    <div class="card-body">
+        <ul>
+            <li>name: {{item.product.name}}</li>
+            <li>description: {{item.product.description}}</li>
+            <li>price: {{item.product.price}}</li>
+            <li>
+                <span>count:</span>
+                <button (click)="increment()" type="button" class="btn btn-primary">+</button>
+                <input type="text" (change)="changeCount($event.target.value)" [value]=item.count>
+                <button (click)="decrement()" type="button" class="btn btn-primary">-</button>
+            </li>
+        </ul>
+        <button (click)="onRemoveItem()" type="button" class="btn btn-primary">Remove from cart</button>
     </div>
 </div>

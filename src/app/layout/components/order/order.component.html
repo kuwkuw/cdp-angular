@@ -1,1 +1,10 @@
 <p>order works!</p>
+
+<div>
+    <div *ngFor="let orderItem of cartItemList">
+        {{orderItem.product.name}} | {{orderItem.product.price}} | {{orderItem.count}}
+    </div>
+    <div>
+        <button (click)="onConfirm()" type="button" class="btn btn-primary">Confirm Order</button>
+    </div>
+</div>

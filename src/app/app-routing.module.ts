@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent, OrderComponent } from './layout';
+import { AboutComponent, OrderComponent, LoginComponent } from './layout';
+import { AuthGuard } from './core';
 
 const routes: Routes = [
-
     {
         path: 'about',
         component: AboutComponent
@@ -13,10 +13,21 @@ const routes: Routes = [
         component: OrderComponent
     },
     {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'admin',
+        canLoad: [AuthGuard],
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+        data: { title: 'Admin' }
+    },
+    {
         path: '',
         redirectTo: '/products',
         pathMatch: 'full'
-    }];
+    }
+];
 
 @NgModule({
     imports: [

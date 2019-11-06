@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observer, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observer, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { Product, ProductCategory } from '../models/product.model';
 
@@ -70,8 +70,8 @@ export class ProductService {
   }
 
   getProduct(productId: number) {
-    return this.getProducts().pipe(map((products) => {
-      return products.find((product) => product.id = productId);
-    }));
+    return this.getProducts()
+      .pipe(map((products) => products.find((product) => product.id === productId)),
+        catchError(err => throwError('Error in getProduct method')));
   }
 }

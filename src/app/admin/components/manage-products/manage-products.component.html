@@ -1,1 +1,22 @@
-<p>manage-products works!</p>
+<div>
+    <button type="button" class="btn btn-primary btn-sm" (click)="onAdd()">Add new
+    </button>
+</div>
+<div *ngFor="let product of products | async" (addToCart)="addProductToCart($event)">
+    <div class="panel panel-default">
+        <div class="panel-heading">Product</div>
+        <div class="panel-body" [ngClass]="{'available': product.isAvailable}">
+            <ul>
+                <li>name: {{product.name}}</li>
+                <li>description: {{product.description}}</li>
+                <li>price: {{product.price | currency: 'EUR'}}</li>
+                <li>category: {{product.category}}</li>
+                <li>isAvailable: {{product.isAvailable}}</li>
+            </ul>
+            <div>
+                <button type="button" class="btn btn-primary btn-sm" (click)="onEdit(product)">Edit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

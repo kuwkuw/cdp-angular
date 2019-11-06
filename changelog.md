@@ -1,5 +1,18 @@
 # Change Log
 
+## Home task 5
+### Added
+-  Routs: 
+    - /products-list
+    - /product/:productID
+    - /cart
+    - /order
+    - /admin + canActivateGuard
+    - /admin/products
+    - /admin/product/add
+    - /admin/product/edit:productID + resolve guard
+    - /admin/orders
+
 ## Home task 4
 ### Added
 - Used builded in pips

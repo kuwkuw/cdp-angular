@@ -1,1 +1,21 @@
-<p>manage-orders works!</p>
+<div *ngFor="let order of orders">
+    <div *ngFor="let orderItem of order">
+        <div class="panel panel-default">
+            <div class="panel-heading">Product</div>
+            <div class="panel-body" [ngClass]="{'available': orderItem.product.isAvailable}">
+                <ul>
+                    <li>name: {{orderItem.product.name}}</li>
+                    <!-- <li>description: {{product.description}}</li>
+                <li>price: {{product.price | currency: 'EUR'}}</li>
+                <li>category: {{product.category}}</li>
+                <li>isAvailable: {{product.isAvailable}}</li> -->
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary btn-sm" (click)="onDelete(order)">Delete
+        </button>
+    </div>
+</div>

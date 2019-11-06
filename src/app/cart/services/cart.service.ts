@@ -14,7 +14,7 @@ export class CartService {
 
   onCartUpdated$ = this.onCartUpdated.asObservable();
 
-  get cartItemList() {
+  get cartItemList(): CartItem[] {
     return this.itemList;
   }
 

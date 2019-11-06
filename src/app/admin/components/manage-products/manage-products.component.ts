@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { ProductService, Product } from '../../../products/';
 
 @Component({
   selector: 'app-manage-products',
@@ -6,10 +10,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-products.component.css']
 })
 export class ManageProductsComponent implements OnInit {
+  products: Observable<Product[]>;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    @Inject(ProductService) private productService: ProductService
+  ) { }
 
   ngOnInit() {
+    this.products = this.productService.getProducts();
+  }
+
+  onEdit(product: Product) {
+    this.router.navigate(['./edit', product.id], { relativeTo: this.route });
+  }
+
+  onAdd() {
+    this.router.navigate(['./add'], { relativeTo: this.route });
   }
 
 }

@@ -6,7 +6,7 @@ export class LocalStorageService {
 
   constructor() { }
 
-  setItem(key: string, value: object): void {
+  setItem(key: string, value: object | boolean): void {
     try {
       return this.storage.setItem(key, JSON.stringify(value));
     } catch (e) {
@@ -16,7 +16,7 @@ export class LocalStorageService {
 
   getItem(key: string): any {
     try {
-      return JSON.parse(this.getItem(key));
+      return JSON.parse(this.storage.getItem(key));
     } catch (e) {
       console.error('Load to localStorage failed', e);
     }

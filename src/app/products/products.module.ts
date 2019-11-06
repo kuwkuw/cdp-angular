@@ -6,8 +6,6 @@ import { ProductListComponent } from './components/product-list/product-list.com
 
 import { ProductsRoutingModule } from './products-routing.module';
 
-import { ProductService } from './services/product.service';
-
 @NgModule({
   declarations: [
     ProductComponent,
@@ -23,8 +21,8 @@ import { ProductService } from './services/product.service';
   providers: [
     CurrencyPipe,
     UpperCasePipe,
-    AsyncPipe,
-    ProductService
+    AsyncPipe
   ]
 })
-export class ProductsModule { }
+export class ProductsModule {
+}

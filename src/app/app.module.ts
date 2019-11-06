@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products';
 import { SharedModule } from './shared';
+import { SpinnerModule } from './widgets/spinner/spinner.module';
 
 import { AppComponent } from './app.component';
 
@@ -18,7 +19,6 @@ import {
   RandomString, generatorServiceFactory
 } from './core';
 import { LayoutModule } from './layout/layout.module';
-import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -31,8 +31,8 @@ import { AdminModule } from './admin/admin.module';
     ProductsModule,
     CartModule,
     LayoutModule,
-    AppRoutingModule,
-    AdminModule
+    SpinnerModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     { provide: LocalStorageService, useClass: LocalStorageService },

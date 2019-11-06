@@ -17,10 +17,14 @@
         <li routerLinkActive="active">
           <a href="#about" routerLink="/admin">Admin panel</a>
         </li>
+        <li routerLinkActive="active">
+          <a routerLink="/login">Login</a>
+        </li>
       </ul>
     </div>
   </nav>
   <div class="container">
+    <app-spinner *ngIf="spinnerService.isVisible()"></app-spinner>
     <div class="col-md-10">
       <router-outlet> </router-outlet>
     </div>
