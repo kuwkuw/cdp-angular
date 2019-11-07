@@ -13,7 +13,7 @@ import { CartService } from '../../services/cart.service';
 export class CartListComponent implements OnInit {
 
   isAscendingOrder = true;
-  cartAddSub: Subscription;
+  // cartAddSub: Subscription; // не используется?
   cartList: CartItem[] = [];
 
   constructor(

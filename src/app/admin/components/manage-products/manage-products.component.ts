@@ -15,6 +15,7 @@ export class ManageProductsComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    // А зачем тут @Inject(ProductService)?
     @Inject(ProductService) private productService: ProductService
   ) { }
 
