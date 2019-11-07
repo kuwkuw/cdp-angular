@@ -18,11 +18,14 @@ import { ProductsRoutingModule } from './products-routing.module';
   exports: [
     ProductListComponent
   ],
-  providers: [
-    CurrencyPipe,
-    UpperCasePipe,
-    AsyncPipe
-  ]
+  // Пайпы не нужно добавлять в providers.
+  // Их можно добавить, если вы хотите испольовать DI для их внедрения в класс компонент,
+  // но я такого у вас не увидел.
+  // providers: [
+  //   CurrencyPipe,
+  //   UpperCasePipe,
+  //   AsyncPipe
+  // ]
 })
 export class ProductsModule {
 }

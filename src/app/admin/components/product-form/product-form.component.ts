@@ -29,6 +29,7 @@ export class ProductFormComponent implements OnInit {
     const product = { ...this.product };
 
     if (product.id) {
+      // по моему, эти методы тут по ошибке
       this.productService.updateUser(product);
       // optional parameter: http://localhost:4200/users;id=2
       // this.router.navigate(['/users', { editedUserID: user.id }]);

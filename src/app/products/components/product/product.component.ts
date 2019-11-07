@@ -11,8 +11,8 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-  private isDetailsMode = false;
+  // используется в шаблоне, должен быть public
+  public isDetailsMode = false;
 
   @Input() product: Product;
 
@@ -22,16 +22,20 @@ export class ProductComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (!this.product) {
       this.isDetailsMode = true;
       this.route.paramMap
-        .pipe(switchMap((params: ParamMap) => this.productService.getProduct(+params.get('productId'))))
+        .pipe(
+          switchMap((params: ParamMap) =>
+            this.productService.getProduct(+params.get('productId'))
+          )
+        )
         .subscribe({
-          next: (product) => this.product = product,
-          error: (err) => console.log(err)
+          next: product => (this.product = product),
+          error: err => console.log(err)
         });
     }
   }
@@ -47,5 +51,4 @@ export class ProductComponent implements OnInit {
   getCategory(category: ProductCategory): string {
     return ProductCategory[category];
   }
-
 }

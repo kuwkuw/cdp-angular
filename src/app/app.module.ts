@@ -43,3 +43,9 @@ import { LayoutModule } from './layout/layout.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// Если запустить приложение так ng build --prod, то
+// ERROR in src/app/products/components/product/product.component.html(15,67): Property 'isDetailsMode' is private and
+// only accessible within class 'ProductComponent'.
+// src/app/admin/components/manage-products/manage-products.component.html(5,47): Property 'addProductToCart' does not
+// exist on type 'ManageProductsComponent'.

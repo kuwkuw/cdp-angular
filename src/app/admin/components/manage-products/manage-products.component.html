@@ -2,6 +2,7 @@
     <button type="button" class="btn btn-primary btn-sm" (click)="onAdd()">Add new
     </button>
 </div>
+<!-- метод addProductToCart отсутствует, веротяно переименован -->
 <div *ngFor="let product of products | async" (addToCart)="addProductToCart($event)">
     <div class="panel panel-default">
         <div class="panel-heading">Product</div>
