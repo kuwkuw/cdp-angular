@@ -12,7 +12,7 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductComponent implements OnInit {
 
-  private isDetailsMode = false;
+  isDetailsMode = false;
 
   @Input() product: Product;
 
