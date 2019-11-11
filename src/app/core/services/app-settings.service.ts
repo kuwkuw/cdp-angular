@@ -24,6 +24,7 @@ export class AppSettingsService {
   getSettings() {
     const settings: AppSettings = this.localStorage.getItem('app-settings');
     if (settings) {
+      // ок, но можно просто return of(settings)
       return new Observable<AppSettings>(observer => {
         observer.next(settings);
       });

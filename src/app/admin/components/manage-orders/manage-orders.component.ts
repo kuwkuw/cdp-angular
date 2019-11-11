@@ -23,6 +23,7 @@ export class ManageOrdersComponent implements OnInit {
     this.sub = this.orderService.getOrderList().subscribe(orders => this.orders = orders);
   }
 
+  // Если есть AutoUnsubscribe, то наверное этот метод лишний
   ngOnDestroy(): void {
     if (this.sub) {
       this.sub.unsubscribe();
