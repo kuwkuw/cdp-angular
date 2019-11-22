@@ -1,1 +1,5 @@
-<app-product *ngFor="let product of products | async" (addToCart)="addProductToCart($event)" [product]="product"></app-product>
+<div>
+    <p *ngIf="(productsError$ | async) as value">{{value}}</p>
+    <app-product *ngFor="let product of (products$ | async)" (addToCart)="addProductToCart($event)" [product]="product">
+    </app-product>
+</div>

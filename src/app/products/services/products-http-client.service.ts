@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observer, Observable, throwError } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 
 import { AppSettingsService } from '../../core';
 import { Product } from '../models/product.model';
@@ -18,7 +18,25 @@ export class ProductsHttpClientService {
   ) { }
 
   getProducts(): Observable<Product[]> {
-    return this.appSettings.getSettings().pipe(switchMap(settings => this.http.get<Product[]>(settings.productUrl)));
+    return this.appSettings.getSettings()
+      .pipe(
+        switchMap(settings => this.http.get<Product[]>(settings.productUrl).pipe(
+          catchError(err => {
+            // A client-side or network error occurred.
+            if (err.error instanceof Error) {
+              console.error('An error occurred:', err.error.message);
+            } else {
+              // The backend returned an unsuccessful response code.
+              // The response body may contain clues as to what went wrong,
+              console.error(
+                `Backend returned code ${err.status}, body was: ${err.error}`
+              );
+            }
+
+            return throwError('Something bad happened; please try again later.');
+          })
+        ))
+      );
   }
 
   getProduct(productId: number): Observable<Product> {
@@ -56,7 +74,7 @@ export class ProductsHttpClientService {
     );
   }
 
-  private handleError(error: any): Promise<any> {
+  private handleError(error: HttpErrorResponse): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }

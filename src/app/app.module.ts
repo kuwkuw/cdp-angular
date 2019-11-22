@@ -10,6 +10,7 @@ import { ProductsModule } from './products';
 import { SharedModule } from './shared';
 import { SpinnerModule } from './widgets/spinner/spinner.module';
 import { httpInterceptorProviders } from './core/interceptors';
+import { RootStoreModule } from './core/@ngrx/root-store.module';
 
 import { AppComponent } from './app.component';
 
@@ -35,7 +36,8 @@ import { LayoutModule } from './layout/layout.module';
     LayoutModule,
     SpinnerModule.forRoot(),
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RootStoreModule
   ],
   providers: [
     { provide: LocalStorageService, useClass: LocalStorageService },
