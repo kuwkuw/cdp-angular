@@ -23,10 +23,8 @@ export class ManageOrdersComponent implements OnInit {
     this.sub = this.orderService.getOrderList().subscribe(orders => this.orders = orders);
   }
 
-  // ngOnDestroy(): void {
-  //   if (this.sub) {
-  //     this.sub.unsubscribe();
-  //   }
-  // }
+  onDeleteOrder(order: Order) {
+    this.orderService.removeOrder(order).then(orders => this.orders = orders);
+  }
 
 }

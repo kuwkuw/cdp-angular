@@ -8,10 +8,9 @@ import { Subscription } from 'rxjs';
 // @NgRx
 import { Store, select } from '@ngrx/store';
 import { AppState, selectSelectedProductByUrl } from './../../../core/@ngrx';
-import * as ProductsActions from './../../../core/@ngrx/products/products.actions';
+import * as RouterActions from '../../../core/@ngrx/router/router.actions';
 
 import { Product, ProductCategory } from '../../models/product.model';
-import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -29,10 +28,7 @@ export class ProductComponent implements OnInit {
   @Output() addToCart = new EventEmitter<Product>();
 
   constructor(
-    private router: Router,
-    private store: Store<AppState>,
-    private route: ActivatedRoute,
-    private productService: ProductService
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +48,7 @@ export class ProductComponent implements OnInit {
   }
 
   onShowProductDetails() {
-    this.router.navigate(['product', this.product.id]);
+    this.store.dispatch(RouterActions.go({path: ['product', this.product.id]}));
   }
 
   getCategory(category: ProductCategory): string {

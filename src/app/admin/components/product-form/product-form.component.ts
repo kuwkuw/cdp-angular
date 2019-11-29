@@ -1,10 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
-import { Subscription, from} from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
-import {AutoUnsubscribe} from '../../../core';
-import { Product, ProductService } from '../../../products';
+import { Store, select } from '@ngrx/store';
+import { AppState, selectSelectedProductByUrl, selectProductsData, selectProductsError } from './../../../core/@ngrx';
+import * as ProuductsActions from '../../../core/@ngrx/products/products.actions';
+
+import { AutoUnsubscribe } from '../../../core';
+import { Product, ProductModel } from '../../../products/models/product.model';
 
 @Component({
   templateUrl: './product-form.component.html',
@@ -14,18 +18,16 @@ import { Product, ProductService } from '../../../products';
 export class ProductFormComponent implements OnInit {
   sub: Subscription;
   product: Product;
-  originalProduct: Product;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    @Inject(ProductService) private productService: ProductService
+    private store: Store<AppState>,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+
     this.sub = this.route.data.pipe(pluck('product')).subscribe((product: Product) => {
       this.product = { ...product };
-      this.originalProduct = { ...product };
     });
   }
 
@@ -33,16 +35,10 @@ export class ProductFormComponent implements OnInit {
     const product = { ...this.product };
 
     if (product.id) {
-      this.productService.updateProduct(product);
+      this.store.dispatch(ProuductsActions.updateProduct({ product }));
     } else {
-      this.productService.createProduct(product);
-      this.onGoBack();
+      this.store.dispatch(ProuductsActions.createProduct({ product }));
     }
-    this.originalProduct = { ...this.product };
-  }
-
-  onGoBack() {
-    this.router.navigate(['./../../'], { relativeTo: this.route });
   }
 
 }

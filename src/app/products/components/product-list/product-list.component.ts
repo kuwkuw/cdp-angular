@@ -4,7 +4,7 @@ import { tap } from 'rxjs/operators';
 
 import { Store, select } from '@ngrx/store';
 import { AppState, selectProductsData, selectProductsError } from './../../../core/@ngrx';
-import * as ProductActions from '../../../core/@ngrx/products/products.actions';
+import * as ProductsActions from '../../../core/@ngrx/products/products.actions';
 
 import { Product } from '../../models/product.model';
 
@@ -25,7 +25,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.products$ = this.store.pipe(select(selectProductsData));
     this.productsError$ = this.store.pipe(select(selectProductsError));
-    this.store.dispatch(ProductActions.getProducts());
+    this.store.dispatch(ProductsActions.getProducts());
   }
 
   addProductToCart(product: Product) {

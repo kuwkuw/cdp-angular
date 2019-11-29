@@ -6,7 +6,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 
-import { routerReducers, CustomSerializer/*, RouterEffects*/ } from './router';
+import { routerReducers, CustomSerializer, RouterEffects } from './router';
 
 import { environment } from './../../../environments/environment';
 
@@ -32,7 +32,7 @@ import { ProductsStoreModule } from './products/product-store.model';
             routerState: RouterState.Minimal,
             serializer: CustomSerializer // has a priority over routerState
         }),
-        EffectsModule.forRoot([/*RouterEffects*/]),
+        EffectsModule.forRoot([RouterEffects]),
         ProductsStoreModule,
 
     ]

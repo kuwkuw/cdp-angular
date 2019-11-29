@@ -1,5 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
+import { Store, select } from '@ngrx/store';
+import { AppState, selectProductsData, selectProductsError } from './../../../core/@ngrx';
+import * as ProductsActions from '../../../core/@ngrx/products/products.actions';
+import * as RouterActions from '../../../core/@ngrx/router/router.actions';
 import { Observable } from 'rxjs';
 
 import { ProductService, Product } from '../../../products/';
@@ -11,27 +16,34 @@ import { ProductService, Product } from '../../../products/';
 })
 export class ManageProductsComponent implements OnInit {
   products: Observable<Product[]>;
+  products$: Observable<ReadonlyArray<Product>>;
 
   constructor(
-    private router: Router,
+    private store: Store<AppState>,
     private route: ActivatedRoute,
-    @Inject(ProductService) private productService: ProductService
   ) { }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.products$ = this.store.pipe(select(selectProductsData));
+    this.store.dispatch(ProductsActions.getProducts());
   }
 
   onEdit(product: Product) {
-    this.router.navigate(['./edit', product.id], { relativeTo: this.route });
+    this.store.dispatch(RouterActions.go({
+      path: ['/admin/products/edit', product.id],
+    }));
   }
 
   onDelete(product: Product) {
-    this.productService.deleteProduct(product).then(_ => this.products = this.productService.getProducts());
+    const productToDelete: Product = { ...product };
+    this.store.dispatch(ProductsActions.deleteProduct({ product: productToDelete }));
   }
 
   onAdd() {
-    this.router.navigate(['./add'], { relativeTo: this.route });
+    this.store.dispatch(RouterActions.go({
+      path: ['./add'],
+      extras: { relativeTo: this.route }
+    }));
   }
 
 }

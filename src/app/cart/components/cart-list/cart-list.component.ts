@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '../../../core/@ngrx';
+import * as RouterActions from '../../../core/@ngrx/router/router.actions';
 
 import { CartItem } from '../../models/cart-item.model';
 
@@ -16,7 +18,7 @@ export class CartListComponent implements OnInit {
   cartList: CartItem[] = [];
 
   constructor(
-    private router: Router,
+    private store: Store<AppState>,
     private cartService: CartService) { }
 
   ngOnInit() {
@@ -36,7 +38,9 @@ export class CartListComponent implements OnInit {
   }
 
   onGoToOrder(): void {
-    this.router.navigate(['/order']);
+    this.store.dispatch(RouterActions.go({
+      path: ['/order']
+    }));
   }
 
   getSum(): number {

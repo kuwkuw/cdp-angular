@@ -2,7 +2,7 @@
     <button type="button" class="btn btn-primary btn-sm" (click)="onAdd()">Add new
     </button>
 </div>
-<div *ngFor="let product of products | async">
+<div *ngFor="let product of products$ | async">
     <div class="panel panel-default">
         <div class="panel-heading">Product</div>
         <div class="panel-body" [ngClass]="{'available': product.isAvailable}">

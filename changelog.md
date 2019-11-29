@@ -1,5 +1,9 @@
 # Change Log
 
+## Home task 7
+### Added
+    -  Implemented all task from HomeTask7.txt
+
 ## Home task 6
 ### Added
 - Mock server with json-server "db/db.json"
