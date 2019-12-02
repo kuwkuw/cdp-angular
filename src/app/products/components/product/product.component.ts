@@ -34,6 +34,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     if (!this.product) {
       this.isDetailsMode = true;
+      // На мой взгляд, это презентационный компонент и тут не должно быть этого кода
       this.sub = this.store.pipe(
         select(selectSelectedProductByUrl)
       ).subscribe({
