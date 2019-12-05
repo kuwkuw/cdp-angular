@@ -17,7 +17,7 @@ export class OrderHttpClientService {
     return this.http.get<Array<Order>>(this.ordersUrl);
   }
 
-  createOrder(order: Order): Promise<Order> {
+  createOrder(order): Promise<Order> {
     return this.http
       .post(this.ordersUrl, JSON.stringify(order), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .toPromise()

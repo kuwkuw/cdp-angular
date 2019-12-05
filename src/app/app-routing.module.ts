@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent, OrderComponent, LoginComponent } from './layout';
+import { AboutComponent, ProcessOrderComponent, LoginComponent } from './layout';
 import { AuthGuard } from './core';
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
     },
     {
         path: 'order',
-        component: OrderComponent
+        component: ProcessOrderComponent
     },
     {
         path: 'login',

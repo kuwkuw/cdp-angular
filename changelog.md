@@ -1,5 +1,9 @@
 # Change Log
 
+## Home task 8
+### Added
+    - ProcessOrderComponent
+
 ## Home task 7
 ### Added
     -  Implemented all task from HomeTask7.txt

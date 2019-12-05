@@ -5,7 +5,7 @@ import { CartItem } from '../../cart/models';
 import { Order } from '../models/order.model';
 import { LocalStorageService } from './local-storage.service';
 import { OrderHttpClientService } from './order-http-client.service';
-
+import { OrderDatales } from '../../core/models/order-details.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +16,8 @@ export class OrderService {
     private orderHttpClientService: OrderHttpClientService
   ) { }
 
-  addOrder(items: CartItem[]) {
-    this.orderHttpClientService.createOrder({ items })
+  addOrder(items: CartItem[], orderDetails: OrderDatales) {
+    this.orderHttpClientService.createOrder({...orderDetails, items})
       .then(order => console.log('order added', order));
   }
 

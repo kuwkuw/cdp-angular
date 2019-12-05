@@ -19,6 +19,8 @@ import {
   ConfigOptionsService,
   ConstantsServiceService,
   ConstantsServiceServiceValue,
+  CONUTRY_LIST,
+  CountryListValue,
   RandomString, generatorServiceFactory
 } from './core';
 import { LayoutModule } from './layout/layout.module';
@@ -42,6 +44,7 @@ import { LayoutModule } from './layout/layout.module';
   providers: [
     { provide: LocalStorageService, useClass: LocalStorageService },
     { provide: ConstantsServiceService, useValue: ConstantsServiceServiceValue },
+    { provide: CONUTRY_LIST, useValue: CountryListValue },
     { provide: RandomString, useFactory: generatorServiceFactory(10) },
     httpInterceptorProviders,
     ConfigOptionsService
