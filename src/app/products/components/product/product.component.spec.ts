@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
 
 import { ProductComponent } from './product.component';
 
@@ -7,10 +8,22 @@ describe('ProductComponent', () => {
   let fixture: ComponentFixture<ProductComponent>;
 
   beforeEach(async(() => {
+    let store: MockStore<{ products: {} }>;
+    const initialState = {
+      products: {
+        loading: false,
+        loaded: false,
+        error: null
+      }
+    };
+
     TestBed.configureTestingModule({
-      declarations: [ ProductComponent ]
+      declarations: [ProductComponent],
+      providers: [
+        provideMockStore({ initialState })
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -20,7 +20,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private store: Store<AppState>) { }
+    private store: Store<AppState>) {
+  }
 
   ngOnInit() {
     this.products$ = this.store.pipe(select(selectProductsData));

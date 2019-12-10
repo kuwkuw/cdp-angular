@@ -8,18 +8,21 @@ describe('CartItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CartItemComponent ]
+      declarations: [CartItemComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CartItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.item = {product: {}};
+
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
   });
 });
