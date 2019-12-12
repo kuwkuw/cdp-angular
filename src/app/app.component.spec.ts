@@ -41,6 +41,7 @@ describe('AppComponent', () => {
   }));
 
   it('should create the app', () => {
+    // Тут надо действительно const? выше есть объявление с let
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();

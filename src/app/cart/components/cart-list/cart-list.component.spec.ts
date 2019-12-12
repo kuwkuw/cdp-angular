@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Хорошо, что это появилось. Раньше не было и надо было писать самому
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 
@@ -19,6 +20,7 @@ describe('CartListComponent', () => {
 
   beforeEach(async(() => {
     let actions$: Observable<Action>;
+    // Переменная нигде не используется?
     let store: MockStore<{ products: {} }>;
     const initialState = {
       products: {
