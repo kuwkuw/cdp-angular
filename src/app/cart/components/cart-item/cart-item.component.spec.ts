@@ -23,6 +23,7 @@ describe('CartItemComponent', () => {
 
     fixture.detectChanges();
 
+    // Тут можно было проверить попал ли объект в шаблон или нет
     expect(component).toBeTruthy();
   });
 });
